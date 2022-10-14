@@ -7,23 +7,8 @@ from copy import copy
 from openpyxl.styles import PatternFill
 import os
 
-%%
-all_path = [r"a"]
-start = 'shb.xlsx'
-PATH_TEMPLATE = '2.xlsx'
-end = 'fn.xlsx'
-for path in all_path:
-    start_file = os.listdir(path)[0]
-    start = path + '\\' + start_file
-    end = path +'\\' + PREFIX_END + start_file
 
-
-
-# %%
-    start = 'shb.xlsx'
-    PATH_TEMPLATE = '2.xlsx'
-    end = 'fn.xlsx'
-
+def exceler(start, PATH_TEMPLATE, end):
     import re
 
     def color_all(sheat, sorce_color_column): 
@@ -206,7 +191,6 @@ for path in all_path:
             if sheat.cell(row=i, column =col).value :
                 piped = sheat.cell(row=i, column =col).value.replace(" ","").split('|')
                 
-                print('aa', piped)
                 if len(piped) > 1:
                     # copy cell ilosc splita -1 
                     for _ in range(len(piped) -1):
@@ -265,6 +249,3 @@ for path in all_path:
     wb2.save(end)
 
     print(f'excel {end} was generatet')
-
-
-
